@@ -1,7 +1,7 @@
 import json
 
 import requests
-from constants.constants import SEARCH_ENGINE_SERVER
+from src.constants.constants import SEARCH_ENGINE_SERVER
 
 
 def create_project():

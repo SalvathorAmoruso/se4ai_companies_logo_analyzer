@@ -3,8 +3,8 @@ import time
 import requests
 
 from data.processed.companies import companies
-from utils.credentials.credentials import get_credentials
-from constants.constants import SEARCH_ENGINE_SERVER
+from src.utils.credentials.credentials import get_credentials
+from src.constants.constants import SEARCH_ENGINE_SERVER
 
 
 def send_company(company_id, name, logo_url):
