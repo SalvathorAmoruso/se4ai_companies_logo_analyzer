@@ -11,6 +11,6 @@ if __name__ == '__main__':
     #synchronize_companies()
     #train()
     #apply_train()
-    get_similar_items()
+    get_similar_items("https://cdn3d.iconscout.com/3d/free/thumb/free-netflix-2950136-2447898.png")
 
 
