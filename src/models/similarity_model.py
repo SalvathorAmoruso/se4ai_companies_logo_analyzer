@@ -1,8 +1,11 @@
+import json
+import os
+
 import requests
 import mlflow
 import mlflow.pyfunc
 
-from src.constants.constants import SEARCH_ENGINE_SERVER
+from src.constants.constants import SEARCH_ENGINE_SERVER, ROOT_DIR
 from src.utils.credentials.credentials import get_credentials
 
 
@@ -45,16 +48,13 @@ def get_similar_items(url):
 
         if response["results"]:
             for result in response["results"]:
-
-                resource = result["resource"]
-
+                # Foreach result store metric distance in ml flow
                 mlflow.log_metric("distance", value=result["distance"])
-                """
-                mlflow.log_param(resource["external_resource_id"]+"_distance", result["distance"])
-                mlflow.log_param(resource["external_resource_id"]+"_name", resource["name"])
-                mlflow.log_param(resource["external_resource_id"]+"_image_url", result["image_url"])
-                mlflow.log_artifact(resource["external_resource_id"]+"_image_url", result["image_url"])
-                """
 
+            # Store file with results in json in a folder
+            with open(os.path.join(ROOT_DIR + "/src/models/similarity_model_results", "results.json"), 'w') as file:
+                json.dump(response["results"], file)
+
+            mlflow.log_artifact(ROOT_DIR + "/src/models/similarity_model_results/results.json")
 
     mlflow.end_run()
