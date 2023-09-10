@@ -1,22 +1,20 @@
-companies = [
-    {"company_id": 1, "logo": "https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png", "name": "Netflix"},
-    {"company_id": 2, "logo": "https://www.pngall.com/wp-content/uploads/11/Apple-Logo-PNG-Background.png", "name": "Apple Inc."},
-    {"company_id": 3, "logo": "https://loghi-famosi.com/wp-content/uploads/2020/10/Microsoft-Logo.png", "name": "Microsoft Corporation"},
-    {"company_id": 4, "logo": "https://1000logos.net/wp-content/uploads/2021/05/Alphabet-logo.png", "name": "Alphabet Inc."},
-    {"company_id": 5, "logo": "https://loghi-famosi.com/wp-content/uploads/2021/11/Meta-Logo.png", "name": "Meta, Inc."},
-    {"company_id": 6, "logo": "https://1000marche.net/wp-content/uploads/2020/03/Amazon-logo.png", "name": "Amazon.com, Inc."},
-    {"company_id": 7, "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png", "name": "Tesla, Inc."},
-    {"company_id": 8, "logo": "https://w7.pngwing.com/pngs/176/171/png-transparent-samsung-galaxy-gurugram-faridabad-logo-samsung-blue-text-logo.png", "name": "Samsung Electronics Co., Ltd."},
-    {"company_id": 9, "logo": "https://w7.pngwing.com/pngs/42/36/png-transparent-airbnb-logo-san-francisco-travel-hotel-airbnb-logo-text-trademark-logo-thumbnail.png", "name": "Airbnb"},
-    {"company_id": 10, "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png", "name": "Visa Inc."},
-    {"company_id": 11, "logo": "https://e7.pngegg.com/pngimages/812/424/png-clipart-ibm-logo-business-computer-software-organization-ibm-blue-computer-network.png", "name": "IBM"},
-    {"company_id": 12, "logo": "https://w1.pngwing.com/pngs/292/322/png-transparent-ford-logo-ford-motor-company-ford-fseries-pickup-truck-blue-text-line-area.png", "name": "Ford Motor Company"},
-    {"company_id": 13, "logo": "https://e7.pngegg.com/pngimages/542/717/png-clipart-walmart-logo-wal-mart-2568-business-retail-business-text-retail.png", "name": "Walmart Inc."},
-    {"company_id": 14, "logo": "https://loghi-famosi.com/wp-content/uploads/2020/09/Nestle-Simbolo.png", "name": "Nestlé S.A."},
-    {"company_id": 15, "logo": "https://w7.pngwing.com/pngs/466/447/png-transparent-pfizer-logo.png", "name": "Pfizer Inc."},
-    {"company_id": 16, "logo": "https://1000marche.net/wp-content/uploads/2020/03/Coca-Cola-Logo.png", "name": "The Coca-Cola Company"},
-    {"company_id": 17, "logo": "https://www.freepnglogos.com/uploads/toyota-logo-png/toyota-logos-brands-logotypes-0.png", "name": "Toyota Motor Corporation"},
-    {"company_id": 18, "logo": "https://www.freepnglogos.com/uploads/at-t-logo/legacy-village-at-t-png-logo-14.png", "name": "AT&T Inc."},
-    {"company_id": 19, "logo": "https://e7.pngegg.com/pngimages/242/522/png-clipart-mcdonald-s-logo-mcdonalds-miscellaneous-angle-thumbnail.png", "name": "McDonald's Corporation"},
-    {"company_id": 20, "logo": "https://e7.pngegg.com/pngimages/465/666/png-clipart-the-walt-disney-company-logo-walt-disney-s-comcast-others-miscellaneous-company.png", "name": "The Walt Disney Company"},
-]
+import csv
+import os
+
+companies = []
+
+
+def get_abs_path(relative_path):
+    return os.path.dirname(os.path.realpath(__file__)) + str(relative_path).replace("/", os.path.sep)
+
+
+# read csv file
+with open(get_abs_path('/companies.csv'), encoding='utf-8') as csvf:
+    # load csv file data using csv library's dictionary reader
+    csvReader = csv.DictReader(csvf)
+
+    # convert each csv row into python dict
+    for row in csvReader:
+        # add this python dict to json array
+        companies.append(row)
+
