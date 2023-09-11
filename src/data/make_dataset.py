@@ -34,7 +34,7 @@ def send_company(company_id, name, logo_url):
     )
 
     response = response.json()
-    if response["STATUS"] == "ERROR":
+    if response["status"] == "ERROR":
         print(response["message"])
 
     print("PRODOTTO " + name + " SINCRONIZZATO")

@@ -57,7 +57,7 @@ def test_update_project(request):
 
 def test_project_edited(request):
     response = requests.get(
-        SEARCH_ENGINE_SERVER + f"/api/projects/{request.config.cache.get('project_id', 0)}",
+        SEARCH_ENGINE_SERVER + f"/api/projects/{request.config.cache.get('project_id', 0)}/get",
         params={
             "api_key": request.config.cache.get('api_key', 0)
         }

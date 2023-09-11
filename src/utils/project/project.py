@@ -21,7 +21,7 @@ def create_project():
         return 0
 
     response = response.json()
-    if response["STATUS"] == "ERROR":
+    if response["status"] == "ERROR":
         print(response["message"])
 
     credentials = {

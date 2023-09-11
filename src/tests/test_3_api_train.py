@@ -26,7 +26,7 @@ def test_project_train_finish(request):
     while response_json is None or response_json['project']['selected_features_indexes'] == '':
         time.sleep(2)
         response = requests.get(
-            SEARCH_ENGINE_SERVER + f"/api/projects/{request.config.cache.get('project_id', 0)}",
+            SEARCH_ENGINE_SERVER + f"/api/projects/{request.config.cache.get('project_id', 0)}/get",
             params={
                 "api_key": request.config.cache.get('api_key', 0)
             }

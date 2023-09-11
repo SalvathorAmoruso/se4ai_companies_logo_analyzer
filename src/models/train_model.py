@@ -23,7 +23,7 @@ def train():
     )
 
     response = response.json()
-    if response["STATUS"] == "ERROR":
+    if response["status"] == "ERROR":
         print(response["message"])
 
     print(response["message"])
@@ -48,7 +48,7 @@ def apply_train():
     )
 
     response = response.json()
-    if response["STATUS"] == "ERROR":
+    if response["status"] == "ERROR":
         print(response["message"])
 
     print(response["message"])
